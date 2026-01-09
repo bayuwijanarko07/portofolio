@@ -1,20 +1,12 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 min-h-screen">
-
-    <PageContainer class="py-[68px] border-b dark:border-gray-100 border-gray-950">
-      <header>
-        Header
-       <ToggleMode/>
-      </header>
-      <main>
-        <slot />
+  <div class="min-h-screen bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+    <div class="mx-auto flex min-h-screen max-w-screen-xl">
+      <Sidebar />
+      <main class="flex-1 p-6">
+        <PageContainer>
+          <slot />
+        </PageContainer>
       </main>
-      <footer>
-        Footer
-      </footer>
-    </PageContainer>
+    </div>
   </div>
 </template>
