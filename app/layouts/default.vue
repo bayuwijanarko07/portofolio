@@ -3,9 +3,9 @@
     <div class="mx-auto flex min-h-screen max-w-screen-xl">
       <Sidebar />
       <main class="flex-1 p-6">
-        <PageContainer>
+        <ElementsContainer>
           <slot />
-        </PageContainer>
+        </ElementsContainer>
       </main>
     </div>
   </div>

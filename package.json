@@ -10,14 +10,21 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/octicon": "^1.2.19",
     "@nuxt/icon": "^2.2.0",
+    "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.0",
+    "@nuxtjs/i18n": "^10.2.1",
+    "@pinia/nuxt": "^0.11.3",
     "@vueuse/motion": "^3.0.3",
     "nuxt": "^4.2.2",
+    "pinia": "^3.0.4",
     "vue": "^3.5.26",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.14.0"
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@types/node": "^25.0.6"
   }
 }

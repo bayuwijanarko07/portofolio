@@ -1,9 +1,8 @@
 <template>
   <label class="cursor-pointer">
-
     <input
       type="checkbox"
-      :checked="isDark"
+      v-model="isDark"
       class="sr-only"
     />
     
@@ -43,64 +42,64 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
-import { useMotion } from '@vueuse/motion'
+  import { computed, ref, watch } from 'vue'
+  import { useMotion } from '@vueuse/motion'
 
-const colorMode = useColorMode()
+  const colorMode = useColorMode()
 
-const isDark = computed({
-  get: () => colorMode.value === 'dark',
-  set: (value: boolean) => {
-    colorMode.preference = value ? 'dark' : 'light'
+  const isDark = computed({
+    get: () => colorMode.value === 'dark',
+    set: (value: boolean) => {
+      colorMode.preference = value ? 'dark' : 'light'
+    }
+  })
+
+  const sliderEl = ref<HTMLElement>()
+  const sunEl = ref<HTMLElement>()
+  const moonEl = ref<HTMLElement>()
+
+  const sliderMotion = useMotion(sliderEl)
+  const sunMotion = useMotion(sunEl)
+  const moonMotion = useMotion(moonEl)
+
+  const setLightMode = (event: MouseEvent) => {
+    event.preventDefault()
+    event.stopPropagation()
+    isDark.value = false
   }
-})
 
-const sliderEl = ref<HTMLElement>()
-const sunEl = ref<HTMLElement>()
-const moonEl = ref<HTMLElement>()
+  const setDarkMode = (event: MouseEvent) => {
+    event.preventDefault()
+    event.stopPropagation()
+    isDark.value = true
+  }
 
-const sliderMotion = useMotion(sliderEl)
-const sunMotion = useMotion(sunEl)
-const moonMotion = useMotion(moonEl)
+  watch(isDark, (val) => {
+    sliderMotion.apply({
+      x: val ? 38 : 0,
+      transition: {
+        type: 'spring',
+        stiffness: 200,
+        damping: 20,
+      },
+    })
 
-const setLightMode = (event: MouseEvent) => {
-  event.preventDefault()
-  event.stopPropagation()
-  isDark.value = false
-}
+    sunMotion.apply({
+      opacity: val ? 0.4 : 1,
+      scale: val ? 0.9 : 1,
+      transition: { 
+        duration: 0.2,
+        ease: 'easeInOut'
+      },
+    })
 
-const setDarkMode = (event: MouseEvent) => {
-  event.preventDefault()
-  event.stopPropagation()
-  isDark.value = true
-}
-
-watch(isDark, (val) => {
-  sliderMotion.apply({
-    x: val ? 38 : 0,
-    transition: {
-      type: 'spring',
-      stiffness: 200,
-      damping: 20,
-    },
-  })
-
-  sunMotion.apply({
-    opacity: val ? 0.4 : 1,
-    scale: val ? 0.9 : 1,
-    transition: { 
-      duration: 0.2,
-      ease: 'easeInOut'
-    },
-  })
-
-  moonMotion.apply({
-    opacity: val ? 1 : 0.4,
-    scale: val ? 1 : 0.9,
-    transition: { 
-      duration: 0.2,
-      ease: 'easeInOut'
-    },
-  })
-}, { immediate: true })
+    moonMotion.apply({
+      opacity: val ? 1 : 0.4,
+      scale: val ? 1 : 0.9,
+      transition: { 
+        duration: 0.2,
+        ease: 'easeInOut'
+      },
+    })
+  }, { immediate: true })
 </script>
