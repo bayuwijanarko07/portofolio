@@ -13,8 +13,8 @@
       "sub_title": "Jelajahi semua yang telah saya buat, kontribusikan, dan capai."
     }
   },
-  "AboutPage": {
-    "title": "Tentang",
+  "ProfilPage": {
+    "title": "Profil",
     "description": "Perkenalan singkat tentang siapa saya.",
     "resume": {
       "paragraf_1": "Halo! Terima kasih telah mengunjungi situs pribadi saya. Saya Satria Bahari, seorang mahasiswa Sistem Informasi di Universitas Jambi. Saya adalah seorang Fullstack Developer dengan minat besar dalam membangun produk perangkat lunak yang berdampak. Stack teknologi saya meliputi teknologi frontend modern seperti Next.js, TypeScript, dan Tailwind CSS, serta pengembangan backend menggunakan Golang. Untuk aplikasi mobile, saya mengembangkan aplikasi Android native menggunakan Kotlin.",
@@ -194,7 +194,7 @@
   },
   "Navigation": {
     "Home": "Beranda",
-    "About": "Tentang",
+    "Profile": "Profil",
     "Achievements": "Pencapaian",
     "Projects": "Proyek",
     "Dashboard": "Dasbor",

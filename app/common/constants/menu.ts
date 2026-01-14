@@ -13,13 +13,13 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: 'Pages: Home',
   },
   {
-    title: 'About',
-    href: '/about',
+    title: 'Profile',
+    href: '/profile',
     icon: 'mdi:user-outline',
     iconSize : ICON_SIZE,
     isShow: true,
     isExternal: false,
-    eventName: 'Pages: About',
+    eventName: 'Pages: Profile',
   },
   {
     title: 'Projects',

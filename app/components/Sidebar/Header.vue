@@ -18,7 +18,6 @@
           Bayu Wijanarko
         </h2>
       </NuxtLink>
-
     </div>
 
     <div class="hidden text-sm text-neutral-600 transition-all duration-300 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-400 lg:flex">
@@ -33,11 +32,11 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  expandMenu: Boolean,
-  imageSize: {
-    type: Number,
-    default: 40
-  }
-})
+  const props = defineProps({
+    expandMenu: Boolean,
+    imageSize: {
+      type: Number,
+      default: 40
+    }
+  })
 </script>

@@ -15,20 +15,20 @@
 </template>
 
 <script setup>
-import { useI18n } from '#imports'
+  import { useI18n } from '#imports'
 
-const { locale, setLocale } = useI18n()
-const currentLocale = ref('id')
+  const { locale, setLocale } = useI18n()
+  const currentLocale = ref('id')
 
-onMounted(() => {
-  currentLocale.value = locale.value
-})
+  onMounted(() => {
+    currentLocale.value = locale.value
+  })
 
-watch(locale, (newLocale) => {
-  currentLocale.value = newLocale
-})
+  watch(locale, (newLocale) => {
+    currentLocale.value = newLocale
+  })
 
-const changeLanguage = () => {
-  setLocale(currentLocale.value)
-}
+  const changeLanguage = () => {
+    setLocale(currentLocale.value)
+  }
 </script>

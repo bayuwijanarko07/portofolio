@@ -8,7 +8,7 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
     :class="[
-      'relative overflow-hidden rounded-2xl border-[1.5px] border-neutral-300 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900',
+      'relative overflow-hidden rounded-2xl border-[1.5px] border-neutral-300 bg-white dark:border-neutral-800 dark:bg-neutral-900',
       className,
     ]"
   >

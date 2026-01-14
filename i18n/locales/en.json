@@ -13,8 +13,8 @@
       "sub_title": "Explore everything I’ve crafted, contributed, and accomplished."
     }
   },
-  "AboutPage": {
-    "title": "About",
+  "ProfilPage": {
+    "title": "Profile",
     "description": "A brief introduction to who I am.",
     "resume": {
       "paragraf_1": "Hello there! Thank you for visiting my personal website. I'm Satria Bahari, a student majoring in Information Systems at the University of Jambi. I'm a Fullstack Developer with a passion for building impactful software products. My stack includes modern frontend technologies like Next.js, TypeScript, and Tailwind CSS, as well as backend development using Golang. For mobile applications, I develop native Android apps using Kotlin.",
@@ -35,24 +35,6 @@
     },
     "resume_download_button": "Download Resume",
     "portfolio_download_button": "Download Portfolio"
-  },
-  "AchievementsPage": {
-    "title": "Achievements",
-    "description": "A curated collection of certificates and badges I’ve earned throughout my professional and academic journey.",
-    "error": "An error occurred on the server.",
-    "no_data": "No data available.",
-    "show_credential": "Show Credentials"
-  },
-  "ProjectsPage": {
-    "title": "Projects",
-    "description": "A showcase of both private and open-source projects I’ve built or contributed to.",
-    "view_project": "View Project",
-    "tech_stack": "Tech Stack",
-    "back_button": "Back",
-    "source_code_text": "Source Code",
-    "live_demo_text": "Live Demo",
-    "error": "An error occurred on the server.",
-    "no_data": "No data available."
   },
   "DashboardPage": {
     "title": "Dashboard",
@@ -127,23 +109,6 @@
       "total_xp": "Total XP"
     }
   },
-  "ChatRoomPage": {
-    "title": "Chat Room",
-    "description": "Feel free to share your thoughts, suggestions, questions, or anything else!",
-    "placeholder": "Type your message...",
-    "sign_in": {
-      "title": "Please sign in to join the conversation. Don't worry, your data is safe with us.",
-      "label": "Sign in with",
-      "signed_label": "Signed in as",
-      "sign_out_label": "Sign out"
-    },
-    "widget": {
-      "title": "Chat Room",
-      "tooltip_title": "Open Chat Room",
-      "tooltip_minimize": "Minimize",
-      "tooltip_signout": "Sign out"
-    }
-  },
   "ContactPage": {
     "title": "Contact",
     "description": "Let`s get in touch",
@@ -178,10 +143,6 @@
       "button": "Send Email"
     }
   },
-  "SmartTalkPage": {
-    "title": "Smart Talk",
-    "description": "An AI-powered space for natural, insightful conversations and idea exploration."
-  },
   "Footer": {
     "hire": "Hire me.",
     "copyright_1": "COPYRIGHT © ",
@@ -194,7 +155,7 @@
   },
   "Navigation": {
     "Home": "Home",
-    "About": "About",
+    "Profile": "Profile",
     "Achievements": "Achievements",
     "Projects": "Projects",
     "Dashboard": "Dashboard",

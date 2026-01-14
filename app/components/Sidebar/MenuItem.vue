@@ -17,9 +17,8 @@
         class="transition-all duration-300 group-hover:-rotate-12"
         :class="isActiveRoute && 'animate-pulse'"
       />
-
       <div class="flex-grow">
-        {{ t(`Navigation.${props.title}`) }}
+        {{ t(`Navigation.${title}`) }}
       </div>
 
       <slot />
@@ -85,11 +84,11 @@
     })
 
     const emit = defineEmits<{
-    (e: 'click'): void
+      (e: 'click'): void
     }>()
 
     function handleClick() {
-    hideMenu()
-    emit('click')
+      hideMenu()
+      emit('click')
     }
 </script>
