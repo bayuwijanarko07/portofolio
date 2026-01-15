@@ -1,9 +1,9 @@
 <template>
-  <ElementsCard class="flex flex-col bg-neutral-100 p-4 text-center">
+  <ElementsCard class="flex flex-col bg-neutral-100 p-4">
     <span class="text-sm dark:text-neutral-400">
       {{ label }}
     </span>
-    <div class="text-xl font-medium text-green-600 lg:text-2xl">
+    <div class="text-xl font-bold text-blue-500 lg:text-2xl">
       {{ value }}
       <span
         v-if="unit"

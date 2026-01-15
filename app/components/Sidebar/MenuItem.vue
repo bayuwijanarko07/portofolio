@@ -14,10 +14,12 @@
       <Icon
         :name="icon"
         :size="props.iconSize"
-        class="transition-all duration-300 group-hover:-rotate-12"
-        :class="isActiveRoute && 'animate-pulse'"
+        class="transition-all duration-300"
+        :class="isActiveRoute && 'animate-pulse bg-blue-500'"
       />
-      <div class="flex-grow">
+      <div class="flex-grow"
+        :class="isActiveRoute && 'text-blue-500'"
+      >
         {{ t(`Navigation.${title}`) }}
       </div>
 
@@ -26,14 +28,14 @@
       <Icon
         v-if="isActiveRoute && !props.isExclusive"
         name="mdi:arrow-right"
-        class="animate-pulse text-gray-500"
+        class="animate-pulse bg-blue-500"
       />
 
       <Icon
         v-if="isExternalUrl && isHovered && !isExclusive"
         name="mdi:arrow-top-right"
         :size="props.iconSize"
-        class="-rotate-100 text-gray-500 transition-all duration-300"
+        class="text-blue-500 transition-all duration-300"
       />
     </div>
   </NuxtLink>
@@ -62,12 +64,12 @@
     if (props.isExclusive) {
         return `
         my-1 flex items-center gap-2 rounded-full
-        border border-green-600 bg-green-600/10
-        px-4 py-2 text-green-600
-        hover:bg-green-600/20
+        border border-blue-500 bg-blue-500/10
+        px-4 py-2 text-blue-500
+        hover:bg-blue-500/20
         dark:border-green-300 dark:bg-green-300/10 dark:text-green-300
         dark:hover:bg-green-400/20
-        lg:transition-all lg:duration-300 lg:hover:scale-105
+        lg:transition-all lg:duration-300
         `
     }
 
@@ -77,8 +79,8 @@
         hover:text-neutral-900 hover:dark:text-neutral-300
         ${
         isActiveRoute.value
-            ? 'bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:!text-neutral-200'
-            : 'hover:lg:bg-neutral-200 hover:dark:lg:bg-neutral-800 lg:hover:scale-105 lg:transition-all lg:duration-300'
+            ? 'bg-blue-100 dark:bg-neutral-800 text-blue-500 dark:!text-neutral-200'
+            : 'hover:lg:bg-neutral-200 hover:dark:lg:bg-neutral-800 lg:transition-all lg:duration-300'
         }
     `
     })
