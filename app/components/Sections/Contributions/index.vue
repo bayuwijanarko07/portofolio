@@ -25,6 +25,7 @@
       class="space-y-1"
     >
       <Overview :data="contributionCalendar" />
+      <Calendar :data="contributionCalendar" />
     </div>
   </section>
 </template>
@@ -34,6 +35,7 @@
   import { useGithubStore } from '@/stores/github'
   import { useI18n } from '#imports'
   import Overview from './Overview.vue'
+  import Calendar from './Calendar.vue'
 
   const { t } = useI18n()
   const tGithub = (key: string) => t(`DashboardPage.github.${key}`)
