@@ -1,6 +1,6 @@
 <template>
   <ElementsCard class="flex flex-col bg-neutral-100 p-4">
-    <span class="text-sm dark:text-neutral-400">
+    <span class="text-sm text-neutral-600 dark:text-neutral-400">
       {{ label }}
     </span>
     <div class="text-xl font-bold text-blue-500 lg:text-2xl">
@@ -13,9 +13,7 @@
       </span>
     </div>
   </ElementsCard>
-
 </template>
-
 
 <script setup lang="ts">
   withDefaults(

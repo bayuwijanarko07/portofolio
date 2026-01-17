@@ -1,7 +1,5 @@
-// types/locale.ts
 export type Locale = 'id' | 'en'
 
-// Type untuk i18n locales
 export interface AppLocale {
   code: Locale
   name: string
@@ -11,7 +9,6 @@ export interface AppLocale {
   domain?: string
 }
 
-// Type untuk dropdown items
 export interface LocaleSwitcherItem {
   value: Locale
   label: string
