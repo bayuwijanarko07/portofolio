@@ -32,14 +32,28 @@ export interface WakaStatsData {
   start_date?: string
   end_date?: string
   last_update?: string
+
   best_day?: {
     date?: string
     text?: string
   }
+
   human_readable_daily_average?: string
   human_readable_total?: string
-  languages?: any[]
-  editors?: any[]
+
+  languages?: {
+    name: string
+    text: string
+    total_seconds?: number
+    percent?: number
+  }[]
+
+  editors?: {
+    name: string
+    text: string
+    total_seconds?: number
+    percent?: number
+  }[]
 }
 
 export interface WakaAllTimeData {
@@ -47,12 +61,31 @@ export interface WakaAllTimeData {
   total_seconds?: number
 }
 
-export interface WakaCombinedResult {
+export type WakaCombinedResult = {
   status: number
-  stats: WakaStatsData | null
-  all_time: WakaAllTimeData | null
+  stats: {
+    start_date?: string
+    end_date?: string
+    last_update?: string
+    best_day?: {
+      date: string
+      text: string
+    }
+    human_readable_daily_average?: string
+    human_readable_total?: string
+    languages?: {
+      name: string
+      text: string
+    }[]
+    editors?: any[]
+  } | null
+  all_time: {
+    text?: string
+    total_seconds?: number
+  } | null
 }
 
 export interface WakaRawResponse {
   data: any
 }
+

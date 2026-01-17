@@ -1,33 +1,53 @@
 <template>
-  <div class="grid gap-3">
-    <Item label="Tanggal Mulai" :value="waka.startDate" />
-    <Item label="Tanggal Selesai" :value="waka.endDate" />
-    <Item label="Rata-rata Harian" :value="waka.dailyAverage" />
-    <Item label="Total Minggu Ini" :value="waka.totalThisWeek" />
-    <Item label="Total Sejak Bergabung" :value="waka.totalAllTime" />
-    <Item label="Hari Terbaik" :value="waka.bestDayText" />
+  <div class="mb-1 grid gap-3 py-2 md:grid-cols-2">
+    <Item :label="tWaka('start_date')" :value="formatDateID(data?.startDate) ?? '-'" />
+    <Item :label="tWaka('end_date')" :value="formatDateID(data?.endDate) ?? '-'" />
+    <Item :label="tWaka('daily_average')" :value="data?.dailyAverage ?? '-'" />
+    <Item :label="tWaka('total_this_week')" :value="data?.totalThisWeek ?? '-'" />
+    <Item :label="tWaka('all_time_since_joined')" :value="data?.totalAllTime ?? '-'" />
+    <Item :label="tWaka('best_day')" :value="data?.bestDayText ?? '-'" />
 
-    <ul>
-        <li v-for="lang in waka.topLanguages" :key="lang.name">
+    <!-- <ul>
+      <li v-for="lang in data?.topLanguages ?? []" :key="lang.name">
         {{ lang.name }} - {{ lang.text }}
-        </li>
-    </ul>
+      </li>
+    </ul> -->
   </div>
 </template>
 
 <script setup lang="ts">
-    import Item from './Item.vue'
-    import { useI18n } from '#imports'
-    import { onMounted } from 'vue'
-    import { useWakatimeStore } from '@/stores/wakatime'
+import { computed } from 'vue'
+import Item from './Item.vue'
+import type { WakaCombinedResult } from '@/types/wakatime'
+import { formatDateID } from '@/utils/date'
 
-    const { t } = useI18n()
-    const waka = useWakatimeStore()
+const { t } = useI18n()
+const tWaka = (key: string) => t(`DashboardPage.wakatime.${key}`)
 
-    const tWaka = (key: string) =>
-    t(`DashboardPage.wakatime.${key}`)
+const props = defineProps<{
+  data?: WakaCombinedResult
+  pending: boolean
+  error: any
+}>()
 
-    onMounted(() => {
-        waka.fetchWakatime()
-    })
+const data = computed(() => {
+  const stats = props.data?.stats
+  const allTime = props.data?.all_time
+
+  if (!stats || !allTime) return null
+
+  return {
+    startDate: stats.start_date ?? '-',
+    endDate: stats.end_date ?? '-',
+    dailyAverage: stats.human_readable_daily_average ?? '-',
+    totalThisWeek: stats.human_readable_total ?? '-',
+    totalAllTime: allTime.text ?? '-',
+    bestDayText: stats.best_day?.text,
+    topLanguages: stats.languages?.map(l => ({
+      name: l.name,
+      text: l.text,
+    })) ?? [],
+  }
+})
+
 </script>

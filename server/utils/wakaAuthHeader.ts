@@ -9,6 +9,6 @@ export const wakaAuthHeader = () => {
   }
 
   return {
-    Authorization: `Basic ${Buffer.from(`${apiKey}:`).toString('base64')}`,
+    Authorization: `Basic ${Buffer.from(apiKey + ':').toString('base64')}`,
   }
 }

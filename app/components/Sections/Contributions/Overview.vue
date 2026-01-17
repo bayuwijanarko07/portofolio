@@ -26,7 +26,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import Item from './Item.vue'
-  import { useI18n } from '#imports'
+  import { useI18n } from 'vue-i18n'
   const { t } = useI18n()
 
   const tGithub = (key: string) => t(`DashboardPage.github.${key}`)
