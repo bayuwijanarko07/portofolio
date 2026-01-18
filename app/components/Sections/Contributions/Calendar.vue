@@ -76,7 +76,7 @@
 <script setup lang="ts">
     const BOX_SIZE = 12
     const COLUMN_GAP = 2.9
-    const WEEK_WIDTH = BOX_SIZE + COLUMN_GAP // 14.9
+    const WEEK_WIDTH = BOX_SIZE + COLUMN_GAP
 
     import { computed, ref } from 'vue'
     import { useI18n } from 'vue-i18n'

@@ -29,33 +29,38 @@
       :error="error"
     />
 
+    <p v-if="pending">Loading…</p>
+    <p v-else-if="error" class="text-red-500">Failed to load data</p>
+    <TopLanguages
+       v-else
+      :data="data"
+      :pending="pending"
+      :error="error"
+    />
   </section>
 </template>
 
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
+  import Overview from './Overview.vue'
+  import TopLanguages from './TopLanguages.vue'
+  import { computed } from 'vue'
+  import { useI18n } from 'vue-i18n'
+  import { WAKATIME_ACCOUNT } from '@/common/constants/wakatime'
+  import type { WakaCombinedResult } from '@/types/wakatime'
+  import { formatRelativeJakarta } from '@/utils/date'
 
-import Overview from './Overview.vue'
-import { WAKATIME_ACCOUNT } from '@/common/constants/wakatime'
-import type { WakaCombinedResult } from '@/types/wakatime'
-import { formatRelativeJakarta } from '@/utils/date'
+  const { t } = useI18n()
+  const tWaka = (key: string) => t(`DashboardPage.wakatime.${key}`)
 
-const { t } = useI18n()
-const tWaka = (key: string) => t(`DashboardPage.wakatime.${key}`)
+  const isActive = WAKATIME_ACCOUNT.is_active
 
-const isActive = WAKATIME_ACCOUNT.is_active
+  const { data, pending, error } = await useAsyncData('wakatime', () => 
+    $fetch<WakaCombinedResult>('/api/wakatime')
+  )
 
-const { data, pending, error } = await useAsyncData(
-  'wakatime',
-  () => $fetch<WakaCombinedResult>('/api/wakatime')
-)
-
-const lastUpdateText = computed(() =>
-  data.value?.stats?.last_update
-    ? formatRelativeJakarta(data.value.stats.last_update)
-    : '-'
-)
+  const lastUpdateText = computed(() =>
+    data.value?.stats?.last_update ? formatRelativeJakarta(data.value.stats.last_update) : '-'
+  )
 </script>
 

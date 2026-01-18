@@ -6,6 +6,10 @@ import type {
 
 export default cachedEventHandler(
   async (): Promise<WakaCombinedResult> => {
+     console.log(
+      '[WAKATIME API HIT]',
+      new Date().toISOString()
+    )
     try {
       const headers = wakaAuthHeader()
       const base = `${WAKATIME_ACCOUNT.base_url}/users/current`
