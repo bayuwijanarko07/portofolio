@@ -31,7 +31,7 @@
 
     <p v-if="pending">Loading…</p>
     <p v-else-if="error" class="text-red-500">Failed to load data</p>
-    <TopLanguages
+    <Languages
        v-else
       :data="data"
       :pending="pending"
@@ -43,7 +43,7 @@
 
 <script setup lang="ts">
   import Overview from './Overview.vue'
-  import TopLanguages from './TopLanguages.vue'
+  import Languages from './Languages.vue'
   import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { WAKATIME_ACCOUNT } from '@/common/constants/wakatime'

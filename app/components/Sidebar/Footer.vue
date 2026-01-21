@@ -4,7 +4,7 @@
       hover:text-neutral-900 hover:dark:text-neutral-300
       bg-blue-100 dark:bg-neutral-800 text-center text-sm">
         <div class="px-2">{{ tFooter('title') }}</div>
-        <div class="p-2">© {{ dateNow() }} {{ tFooter('sub_title') }}</div>
+        <div class="mt-2">© {{ dateNow() }} {{ tFooter('sub_title') }}</div>
     </div>
 </template>
 

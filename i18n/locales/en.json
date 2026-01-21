@@ -15,23 +15,37 @@
   },
   "ProfilPage": {
     "title": "Profile",
-    "description": "A brief introduction to who I am.",
-    "resume": {
-      "paragraf_1": "Hello there! Thank you for visiting my personal website. I'm Satria Bahari, a student majoring in Information Systems at the University of Jambi. I'm a Fullstack Developer with a passion for building impactful software products. My stack includes modern frontend technologies like Next.js, TypeScript, and Tailwind CSS, as well as backend development using Golang. For mobile applications, I develop native Android apps using Kotlin.",
+    "description": "Short Biography",
+    "about": {
+      "paragraf_1": "Hola! I am a Frontend Web Developer who focuses on building modern interfaces that are scalable, maintainable, and product-oriented. Experienced in using Nuxt.js (including Nuxt 4), Astro.js, and the Vue ecosystem, I am used to designing frontend architecture that is neat, data-driven, and comfortable for users to use.",
 
-      "paragraf_2": "I enjoy creating solutions that are both user-friendly and performant. Whether it's building intuitive interfaces or architecting backend services, I aim to bring efficiency and clarity into every layer of the application. I’m a fast learner who thrives in dynamic environments, and I enjoy solving complex problems collaboratively.",
+      "paragraf_2": "I not only implement features, but also think about data flow, component structure, performance, and overall user experience. I am quite detailed in terms of UI/UX, starting from system-based dark mode, motion that feels natural, to design consistency, without sacrificing code quality and readability..",
 
-      "paragraf_3": "I believe that great communication and team synergy are key to success in software development. My experience has shaped my technical and analytical skills, as well as my leadership qualities. I'm always excited to work in teams, learn from others, and contribute to impactful projects.",
+      "paragraf_3": "Experienced in dealing with real system requirements and business contexts, I enjoy the role of a problem solver bridging product, design and technical solution needs. In the future, I am ready to grow into a Senior Frontend Engineer.",
 
       "paragraf_4": "Best regards,"
     },
     "career": {
       "title": "Career",
-      "sub_title": "My professional journey."
+      "sub_title": "Professional Experience.",
+      "show_detail": "Show details",
+      "hide_detail": "Hide details",
+      "sections": {
+        "responsibilities": "Responsibilities",
+        "lessons_learned": "Lessons Learned",
+        "impact": "Impact"
+      }
+    },
+     "duration": {
+      "year": "Year",
+      "years": "Years",
+      "month": "Month",
+      "months": "Months",
+      "present": "Present"
     },
     "education": {
       "title": "Education",
-      "sub_title": "My educational journey."
+      "sub_title": "Last Education."
     },
     "resume_download_button": "Download Resume",
     "portfolio_download_button": "Download Portfolio"
