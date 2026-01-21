@@ -6,10 +6,6 @@ import type {
 
 export default cachedEventHandler(
   async (): Promise<WakaCombinedResult> => {
-     console.log(
-      '[WAKATIME API HIT]',
-      new Date().toISOString()
-    )
     try {
       const headers = wakaAuthHeader()
       const base = `${WAKATIME_ACCOUNT.base_url}/users/current`
@@ -22,9 +18,10 @@ export default cachedEventHandler(
       const stats = statsRes?.data
       const allTime = allTimeRes?.data
 
+      // console.log(stats)
+
       return {
         status: 200,
-
         stats: {
           start_date: stats?.start,
           end_date: stats?.end,
@@ -60,8 +57,8 @@ export default cachedEventHandler(
       }
     }
   },
-  {
-    maxAge: 60 * 10,
-    name: 'wakatime-overview-cache',
-  }
+  // {
+  //   maxAge: 60 * 10,
+  //   name: 'wakatime-overview-cache',
+  // }
 )

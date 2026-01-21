@@ -96,35 +96,7 @@
       "total_this_week": "Total Minggu Ini",
       "best_day": "Hari Terbaik",
       "all_time_since_joined": "Total Coding Sejak Bergabung",
-      "languages": "Bahasa Teratas"
-    },
-    "codewars": {
-      "title": "Perkembangan Codewars",
-      "sub_title": "Metri performa dari tantangan Codewars.",
-      "title_rank": "Peringkat",
-      "title_honor": "Honor",
-      "title_completed": "Tantangan Diselesaikan",
-      "title_leaderboard": "Papan Peringkat Global",
-      "title_clan": "Klan",
-      "title_skills": "Keahlian Terkait"
-    },
-    "monkeytype": {
-      "title": "Statistik Monkeytype",
-      "sub_title": "Statistik dan performa mengetik.",
-      "joined": "Bergabung",
-      "current_streak": "Rekor Saat Ini",
-      "unit_days": "hari",
-      "title_test_started": "Tes Dimulai",
-      "title_test_completed": "Tes Selesai",
-      "title_time_typing": "Total Waktu Mengetik",
-      "title_leaderboard": "Papan Peringkat Bahasa Inggris Sepanjang Masa",
-      "unit_seconds": "detik",
-      "unit_time": "waktu",
-      "unit_words": "kata",
-      "top": "teratas",
-      "days_ago": "hari yang lalu",
-      "xp_until_next_level": "XP ke Level Selanjutnya",
-      "total_xp": "Total XP"
+      "languages": "Bahasa"
     }
   },
   "ChatRoomPage": {
@@ -183,9 +155,8 @@
     "description": "Ruang berbasis AI untuk percakapan alami, penuh wawasan, dan eksplorasi ide."
   },
   "Footer": {
-    "hire": "Rekrut saya.",
-    "copyright_1": "HAK CIPTA © ",
-    "copyright_2": "Satria Bahari. Seluruh hak dilindungi."
+    "title" : "Dikembangkan dengan ❤ oleh Bayu Wijanarko.",
+    "sub_title": "Semua Hak Dilindungi Undang-undang."
   },
   "LocaleSwitcher": {
     "en": "🇺🇸",
@@ -198,9 +169,7 @@
     "Achievements": "Pencapaian",
     "Projects": "Proyek",
     "Dashboard": "Dasbor",
-    "Chat Room": "Ruang Obrolan",
-    "Contact": "Kontak",
-    "Smart Talk": "Smart Talk"
+    "Contact": "Kontak"
   },
   "NotFoundPage": {
     "title": "Halaman tidak ditemukan",

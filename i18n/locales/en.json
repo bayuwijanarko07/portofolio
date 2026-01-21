@@ -78,35 +78,7 @@
       "total_this_week": "Total This Week",
       "best_day": "Best Day",
       "all_time_since_joined": "All-Time Coding Since Joined",
-      "languages": "Top Languages"
-    },
-    "codewars": {
-      "title": "Codewars Progress",
-      "sub_title": "Performance metrics from Codewars challenges.",
-      "title_rank": "Rank",
-      "title_honor": "Honor",
-      "title_completed": "Challenges Completed",
-      "title_leaderboard": "Global Leaderboard",
-      "title_clan": "Clan",
-      "title_skills": "Associated Skills"
-    },
-    "monkeytype": {
-      "title": "Monkeytype Stats",
-      "sub_title": "Typing statistics and performance.",
-      "joined": "Joined",
-      "current_streak": "Current Streak",
-      "unit_days": "days",
-      "title_test_started": "Tests Started",
-      "title_test_completed": "Tests Completed",
-      "title_time_typing": "Total Typing Time",
-      "title_leaderboard": "All-Time English Leaderboard",
-      "unit_seconds": "seconds",
-      "unit_time": "time",
-      "unit_words": "words",
-      "top": "top",
-      "days_ago": "days ago",
-      "xp_until_next_level": "XP to Next Level",
-      "total_xp": "Total XP"
+      "languages": "Languages"
     }
   },
   "ContactPage": {
@@ -144,9 +116,8 @@
     }
   },
   "Footer": {
-    "hire": "Hire me.",
-    "copyright_1": "COPYRIGHT © ",
-    "copyright_2": "Satria Bahari. All rights reserved."
+    "title": "Developed with ❤ by Bayu Wijanarko.",
+    "sub_title": "All Rights Reserved."
   },
   "LocaleSwitcher": {
     "en": "🇺🇸",
@@ -159,7 +130,6 @@
     "Achievements": "Achievements",
     "Projects": "Projects",
     "Dashboard": "Dashboard",
-    "Chat Room": "Chat Room",
     "Contact": "Contact"
   },
   "NotFoundPage": {
