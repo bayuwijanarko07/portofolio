@@ -24,54 +24,54 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+  import { ref } from 'vue'
 
-interface Position {
-  x: number
-  y: number
-}
-
-const props = withDefaults(
-  defineProps<{
-    className?: string
-    spotlightColor?: `rgba(${number}, ${number}, ${number}, ${number})`
-  }>(),
-  {
-    className: '',
-    spotlightColor: 'rgba(255, 255, 255, 0.25)',
+  interface Position {
+    x: number
+    y: number
   }
-)
 
-const divRef = ref<HTMLDivElement | null>(null)
-const isFocused = ref(false)
-const position = ref<Position>({ x: 0, y: 0 })
-const opacity = ref(0)
+  const props = withDefaults(
+    defineProps<{
+      className?: string
+      spotlightColor?: `rgba(${number}, ${number}, ${number}, ${number})`
+    }>(),
+    {
+      className: '',
+      spotlightColor: 'rgba(255, 255, 255, 0.25)',
+    }
+  )
 
-function handleMouseMove(e: MouseEvent) {
-  if (!divRef.value || isFocused.value) return
+  const divRef = ref<HTMLDivElement | null>(null)
+  const isFocused = ref(false)
+  const position = ref<Position>({ x: 0, y: 0 })
+  const opacity = ref(0)
 
-  const rect = divRef.value.getBoundingClientRect()
-  position.value = {
-    x: e.clientX - rect.left,
-    y: e.clientY - rect.top,
+  function handleMouseMove(e: MouseEvent) {
+    if (!divRef.value || isFocused.value) return
+
+    const rect = divRef.value.getBoundingClientRect()
+    position.value = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    }
   }
-}
 
-function handleFocus() {
-  isFocused.value = true
-  opacity.value = 0.6
-}
+  function handleFocus() {
+    isFocused.value = true
+    opacity.value = 0.6
+  }
 
-function handleBlur() {
-  isFocused.value = false
-  opacity.value = 0
-}
+  function handleBlur() {
+    isFocused.value = false
+    opacity.value = 0
+  }
 
-function handleMouseEnter() {
-  opacity.value = 0.6
-}
+  function handleMouseEnter() {
+    opacity.value = 0.6
+  }
 
-function handleMouseLeave() {
-  opacity.value = 0
-}
+  function handleMouseLeave() {
+    opacity.value = 0
+  }
 </script>

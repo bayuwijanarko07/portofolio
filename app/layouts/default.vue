@@ -1,12 +1,12 @@
 <template>
-  <div class="pt-8 bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
-    <div class="mx-auto min-h-screen max-w-screen-xl flex flex-col md:flex-row">
-      <Sidebar class="md:shrink-0" />
-      <main class="flex-1 px-4 md:px-0 md:mx-6">
+  <div class="min-h-screen xl:flex bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+    <div class="flex-1 xl:ml-[290px]">
+    <Sidebar/>
+      <main class="mx-auto">
         <SidebarHeader />
-        <ElementsContainer>
+        <div class="mx-auto max-w-(--breakpoint-2xl) p-6 pb-20 md:p-8 md:pb-8">
           <slot />
-        </ElementsContainer>
+        </div>
       </main>
     </div>
   </div>

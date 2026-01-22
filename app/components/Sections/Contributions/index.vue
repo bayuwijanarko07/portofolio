@@ -13,10 +13,7 @@
       {{ t('DashboardPage.error') }}
     </p>
 
-    <p
-      v-else-if="error"
-      class="text-red-500"
-    >
+    <p v-else-if="error" class="text-red-500">
       {{ t('DashboardPage.error') }}
     </p>
 
@@ -48,5 +45,4 @@
   const contributionCalendar = computed(() =>
     data.value
   )
-
 </script>

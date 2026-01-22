@@ -58,4 +58,5 @@ export default defineNuxtConfig({
   runtimeConfig: {
     githubToken: process.env.GITHUB_PERSONAL_TOKEN,
   },
+  css: ["v-network-graph/lib/style.css"],
 })

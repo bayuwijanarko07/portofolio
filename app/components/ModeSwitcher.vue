@@ -6,12 +6,10 @@
       class="sr-only"
     />
     
-    <div
-      class="relative flex h-10 w-20 items-center bg-neutral-100 dark:bg-neutral-800 rounded-full border border-neutral-300 dark:border-neutral-700 p-1 transition-color"
-    >
-      <div
-        ref="sliderEl"
-        class="absolute bottom-1 top-1 w-8 rounded-full bg-neutral-200 dark:bg-neutral-700"
+    <div class="relative flex h-10 w-20 items-center bg-neutral-100 dark:bg-neutral-800 
+    rounded-full border border-neutral-300 dark:border-neutral-700 p-1 transition-color">
+      <div ref="sliderEl"
+          class="absolute bottom-1 top-1 w-8 rounded-full bg-neutral-200 dark:bg-neutral-700"
       />
       
       <div class="flex w-full items-center justify-between px-2">

@@ -48,8 +48,8 @@
     data?: OverviewData
   }>()
 
-  const totalContributions = computed(
-    () => props.data?.totalContributions ?? 0
+  const totalContributions = computed(() => 
+    props.data?.totalContributions ?? 0
   )
 
   const weeks = computed(
@@ -73,15 +73,15 @@
   )
 
   const bestContribution = computed(() =>
-    totalContributionList.value.length
-      ? Math.max(...totalContributionList.value)
-      : 0
+    totalContributionList.value.length ? Math.max(...totalContributionList.value) : 0
   )
 
   const averageContribution = computed(() => {
-    const days = totalContributionList.value.length
-    return days
-      ? Math.round(totalContributions.value / days)
-      : 0
+    const list = totalContributionList.value
+    if (!list.length) return 0
+
+    const total = list.reduce((sum, v) => sum + v, 0)
+    return Math.round(total / list.length)
   })
+
 </script>

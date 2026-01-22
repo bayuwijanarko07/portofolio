@@ -1,15 +1,13 @@
 <template>
-  <aside class="hidden sm:block">
-    <div class="sticky top-0 z-999 bg-white rounded-2xl px-2 border-[1.5px] border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 py-4 dark:text-gray-100 z-10 flex flex-col transition-all duration-300">
-      <div class="hidden md:block">
-        <ElementsBreakline />
-        <div class="hidden lg:block">
-          <SidebarMenu :list="filteredMenu" />
-        </div>
-        <ElementsBreakline />
-        <SidebarFooter />
-      </div>
+  <aside class="fixed flex-col mt-0 top-0 px-5 left-0 h-screen border-r dark:border-neutral-800 xl:w-[290px]
+    bg-white dark:bg-neutral-900 dark:text-gray-100 -translate-x-full xl:translate-x-0">
+    <div class="pt-8 pb-7 flex justify-start">
+      <h3>Bayu Wijanarko</h3>
     </div>
+    <ElementsBreakline />
+    <SidebarMenu :list="filteredMenu" />
+    <ElementsBreakline />
+    <SidebarFooter />
   </aside>
 </template>
 

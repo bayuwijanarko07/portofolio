@@ -76,6 +76,7 @@ export type WakaCombinedResult = {
     languages?: {
       name: string
       text: string
+      total_seconds?: number
     }[]
     editors?: any[]
   } | null

@@ -12,35 +12,29 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import Item from './Item.vue'
-  import type { WakaCombinedResult } from '@/types/wakatime'
   import { formatDateID } from '@/utils/date'
+  import type { WakaCombinedResult } from '@/types/wakatime'
+  type Stats = NonNullable<WakaCombinedResult['stats']>
+  type AllTime = NonNullable<WakaCombinedResult['all_time']>
 
   const { t } = useI18n()
   const tWaka = (key: string) => t(`DashboardPage.wakatime.${key}`)
 
   const props = defineProps<{
-    data?: WakaCombinedResult
-    pending: boolean
-    error: any
+    stats: Stats | null
+    allTime: AllTime | null
   }>()
 
   const data = computed(() => {
-    const stats = props.data?.stats
-    const allTime = props.data?.all_time
-
-    if (!stats || !allTime) return null
+    if (!props.stats || !props.allTime) return null
 
     return {
-      startDate: stats.start_date ?? '-',
-      endDate: stats.end_date ?? '-',
-      dailyAverage: stats.human_readable_daily_average ?? '-',
-      totalThisWeek: stats.human_readable_total ?? '-',
-      totalAllTime: allTime.text ?? '-',
-      bestDayText: stats.best_day?.text,
-      topLanguages: stats.languages?.map(l => ({
-        name: l.name,
-        text: l.text,
-      })) ?? [],
+      startDate: props.stats.start_date,
+      endDate: props.stats.end_date,
+      dailyAverage: props.stats.human_readable_daily_average,
+      totalThisWeek: props.stats.human_readable_total,
+      totalAllTime: props.allTime.text,
+      bestDayText: props.stats.best_day?.text ?? '-',
     }
   })
 </script>

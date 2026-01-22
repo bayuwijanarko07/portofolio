@@ -24,7 +24,8 @@
 
     <Overview
       v-else
-      :data="data"
+      :stats="store.stats"
+      :all-time="store.allTime"
       :pending="pending"
       :error="error"
     />
@@ -32,14 +33,14 @@
     <p v-if="pending">Loading…</p>
     <p v-else-if="error" class="text-red-500">Failed to load data</p>
     <Languages
-       v-else
-      :data="data"
+      v-else
+      :stats="store.stats"
+      :all-time="store.allTime"
       :pending="pending"
       :error="error"
     />
   </section>
 </template>
-
 
 <script setup lang="ts">
   import Overview from './Overview.vue'
@@ -47,7 +48,7 @@
   import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { WAKATIME_ACCOUNT } from '@/common/constants/wakatime'
-  import type { WakaCombinedResult } from '@/types/wakatime'
+  import { useWakatimeStore } from '@/stores/wakatime'
   import { formatRelativeJakarta } from '@/utils/date'
 
   const { t } = useI18n()
@@ -55,12 +56,19 @@
 
   const isActive = WAKATIME_ACCOUNT.is_active
 
-  const { data, pending, error } = await useAsyncData('wakatime', () => 
-    $fetch<WakaCombinedResult>('/api/wakatime')
-  )
+  const store = useWakatimeStore()
+
+  onMounted(() => {
+    store.fetch()
+  })
+
+  const pending = computed(() => store.pending)
+  const error = computed(() => store.error)
 
   const lastUpdateText = computed(() =>
-    data.value?.stats?.last_update ? formatRelativeJakarta(data.value.stats.last_update) : '-'
+    store.lastUpdate
+      ? formatRelativeJakarta(store.lastUpdate)
+      : '-'
   )
 </script>
 

@@ -2,7 +2,7 @@ import { GITHUB_ACCOUNT, GITHUB_USER_QUERY } from '@/common/constants/github'
 import { githubAuthHeader } from '../utils/githubAuthHeader'
 import type { GithubGraphQLResponse } from '@/types/github'
 
-export default defineEventHandler(async () => {
+export default cachedEventHandler(async () => {
   const username = GITHUB_ACCOUNT.username
 
   const res = await $fetch<GithubGraphQLResponse>(
@@ -17,4 +17,10 @@ export default defineEventHandler(async () => {
     }
   )
   return res.data.user.contributionsCollection.contributionCalendar
-})
+},
+{
+  maxAge: 60 * 60, 
+  staleMaxAge: 60 * 60 * 24,
+  name: 'github-contribution-calendar',
+}
+)

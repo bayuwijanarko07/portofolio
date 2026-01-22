@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full overflow-x-auto md:overflow-x-hidden lg:overflow-x-auto">
+    <div class="w-full overflow-x-auto lg:overflow-x-auto">
         <div class="min-w-max">
             <ul class="relative mb-1 h-5">
                 <li
@@ -26,7 +26,7 @@
                         {{ day }}
                     </span>
                 </div>
-                <div class="flex justify-start gap-[2.9px]">
+                <div class="flex justify-start gap-[2px] sm:gap-[2.5px] md:gap-[2.9px]">
                     <div v-for="week in weeks" :key="week.firstDay">
                         <span
                             v-for="contribution in week.contributionDays"
@@ -52,6 +52,7 @@
             </div>
         </div>
     </div>
+    
     <div class="flex flex-wrap items-center justify-between gap-2">
         <div class="flex items-center gap-2 text-sm">
             <span class="dark:text-neutral-400">
