@@ -9,7 +9,7 @@
       <h3>{{ tGithub('sub_title') }}</h3>
     </ElementsSubHeader>
 
-    <p v-if="loading">
+    <p v-if="pending">
       {{ t('DashboardPage.error') }}
     </p>
 
@@ -31,19 +31,22 @@
 </template>
 
 <script setup lang="ts">
-  import { storeToRefs } from 'pinia'
-  import { useGithubStore } from '@/stores/github'
   import { useI18n } from '#imports'
   import Overview from './Overview.vue'
   import Calendar from './Calendar.vue'
+  import type { ContributionCalendar } from '@/types/github'
 
   const { t } = useI18n()
   const tGithub = (key: string) => t(`DashboardPage.github.${key}`)
 
-  const githubStore = useGithubStore()
-  const { loading, error, contributionCalendar } = storeToRefs(githubStore)
+  const { data, pending, error } = await useAsyncData<ContributionCalendar>('github-contributions', () =>
+    $fetch('/api/github', {
+      method: 'POST',
+    })
+  )
+  
+  const contributionCalendar = computed(() =>
+    data.value
+  )
 
-  if (!contributionCalendar.value && !loading.value) {
-    await githubStore.fetchGithubData()
-  }
 </script>

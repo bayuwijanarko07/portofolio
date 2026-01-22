@@ -32,3 +32,9 @@ export interface GithubApiResponse {
   status: number
   data: GithubUser
 }
+
+export interface GithubGraphQLResponse {
+  data: {
+    user: GithubUser
+  }
+}

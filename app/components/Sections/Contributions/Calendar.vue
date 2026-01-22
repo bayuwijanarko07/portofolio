@@ -50,7 +50,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="flex flex-wrap items-center justify-between gap-2">
@@ -106,43 +105,69 @@
         data?: ContributionCalendar
     }
 
-    const tGithub = (key: string) => t(`DashboardPage.github.${key}`)
-
-    const props = defineProps<CalendarProps>()
-
-    const { t, locale } = useI18n()
-
     interface CalendarMonth extends ContributionMonth {
         contributionsCount: number
         weekIndex: number
     }
 
+    const { t, locale } = useI18n()
+
+    const tGithub = (key: string) => t(`DashboardPage.github.${key}`)
+
+    const props = defineProps<CalendarProps>()
+
     const weeks = computed(() => props.data?.weeks ?? [])
 
-
     const months = computed<CalendarMonth[]>(() => {
-        if (!props.data?.months) return []
+        if (!weeks.value?.length) return []
 
-        let weekIndex = 0
+            const result: CalendarMonth[] = []
+            let weekIndex = 0
 
-        return props.data.months.map((month) => {
-            const currentIndex = weekIndex
-            weekIndex += month.totalWeeks
+            const monthMap = new Map<string, CalendarMonth & { _weeks: number }>()
 
-            const contributionsCount = weeks.value
-            .filter(
-                (week) =>
-                week.firstDay.slice(0, 7) === month.firstDay.slice(0, 7),
-            )
-            .flatMap((week) => week.contributionDays)
-            .reduce((t, d) => t + d.contributionCount, 0)
+        for (const week of weeks.value) {
+            const date = new Date(week.firstDay)
+            const key = `${date.getFullYear()}-${date.getMonth()}`
 
-            return {
-            ...month,
-            weekIndex: currentIndex,
-            contributionsCount,
+            if (!monthMap.has(key)) {
+                monthMap.set(key, {
+                    name: date.toLocaleString('en-US', { month: 'short' }),
+                    firstDay: week.firstDay,
+                    totalWeeks: 0,
+                    weekIndex,
+                    contributionsCount: 0,
+                    _weeks: 0,
+                })
             }
-        })
+
+            const month = monthMap.get(key)!
+            month.totalWeeks++
+            month._weeks++
+
+            month.contributionsCount += week.contributionDays.reduce(
+                (t, d) => t + d.contributionCount,
+                0,
+            )
+
+            weekIndex++
+        }
+
+        return Array.from(monthMap.values()).map(({ _weeks, ...month }) => month)
+    })
+
+    const contributionColors = computed<string[]>(() => {
+        if (!weeks.value?.length) return []
+
+        const set = new Set<string>()
+
+        for (const week of weeks.value) {
+            for (const day of week.contributionDays) {
+            set.add(day.color)
+            }
+        }
+
+        return Array.from(set)
     })
 
     const tooltip = ref({
@@ -152,8 +177,6 @@
         count: 0,
         date: '',
     })
-
-    const contributionColors = computed(() => props.data?.colors ?? [])
 
     const onHover = (e: MouseEvent, contribution: ContributionDay) => {
         tooltip.value = {
@@ -168,9 +191,11 @@
     const TOOLTIP_OFFSET = 12
     const TOOLTIP_WIDTH = 220
     const TOOLTIP_HEIGHT = 40
+
     const hideTooltip = () => {
         tooltip.value.show = false
     }
+
     onMounted(() => {
         window.addEventListener('scroll', hideTooltip, true)
     })
@@ -210,7 +235,7 @@
 
     const dayLabels = ['Mon', '', 'Wed', '', 'Fri', '', '']
 
-        const showDayLabel = (index: number) => {
+    const showDayLabel = (index: number) => {
         return index === 0 || index === 2 || index === 4
     }
 

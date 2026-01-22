@@ -1,8 +1,5 @@
 import { WAKATIME_ACCOUNT } from '@/common/constants/wakatime'
-import type {
-  WakaCombinedResult,
-  WakaRawResponse,
-} from '@/types/wakatime'
+import type { WakaCombinedResult, WakaRawResponse } from '@/types/wakatime'
 
 export default cachedEventHandler(
   async (): Promise<WakaCombinedResult> => {
@@ -17,8 +14,6 @@ export default cachedEventHandler(
 
       const stats = statsRes?.data
       const allTime = allTimeRes?.data
-
-      // console.log(stats)
 
       return {
         status: 200,
