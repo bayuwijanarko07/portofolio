@@ -57,8 +57,8 @@ export default cachedEventHandler(
       }
     }
   },
-  // {
-  //   maxAge: 60 * 10,
-  //   name: 'wakatime-overview-cache',
-  // }
+  {
+    maxAge: 60 * 10,
+    name: 'wakatime-overview-cache',
+  }
 )
