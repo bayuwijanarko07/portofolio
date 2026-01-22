@@ -32,7 +32,7 @@
 
     <p v-if="pending">Loading…</p>
     <p v-else-if="error" class="text-red-500">Failed to load data</p>
-    <Languages
+    <WakaLanguageChart
       v-else
       :stats="store.stats"
       :all-time="store.allTime"
@@ -44,7 +44,7 @@
 
 <script setup lang="ts">
   import Overview from './Overview.vue'
-  import Languages from './Languages.vue'
+  import WakaLanguageChart from './WakaLanguageChart.vue'
   import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { WAKATIME_ACCOUNT } from '@/common/constants/wakatime'
