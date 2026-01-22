@@ -1,80 +1,96 @@
 <template>
-  <div class="flex flex-col">
-    <ul class="relative mb-1 h-5">
-        <li
-            v-for="month in months"
-            :key="month.firstDay"
-            class="absolute text-xs text-neutral-500 dark:text-neutral-400"
-            :class="{ invisible: month.totalWeeks < 2 }"
-            :style="{
-                left: `${month.weekIndex * WEEK_WIDTH}px`
-            }"
-        >
-            {{ month.name }}
-        </li>
-    </ul>
+    <div class="w-full overflow-x-auto md:overflow-x-hidden lg:overflow-x-auto">
+        <div class="min-w-max">
+            <ul class="relative mb-1 h-5">
+                <li
+                    v-for="month in months"
+                    :key="month.firstDay"
+                    class="absolute text-xs text-neutral-500 dark:text-neutral-400"
+                    :class="{ invisible: month.totalWeeks < 2 }"
+                    :style="{
+                        left: `${DAY_LABEL_WIDTH + month.weekIndex * WEEK_WIDTH}px`
+                    }"
+                >
+                    {{ month.name }}
+                </li>
+            </ul>
 
-    <div class="flex justify-start gap-[2.9px] overflow-hidden">
-      <div v-for="week in weeks" :key="week.firstDay">
-        <span
-            v-for="contribution in week.contributionDays"
-            :key="contribution.date"
-            class="my-[2px] block h-[12px] w-[12px] rounded-sm
-                    bg-white dark:bg-neutral-800
-                    transition-all duration-150
-                    border-[0.1px] border-neutral-300
-                    dark:border-neutral-900
-                    hover:ring-2 hover:ring-neutral-400
-                    dark:hover:ring-neutral-500"
-            :style="
-                contribution.contributionCount > 0
-                ? { backgroundColor: contribution.color }
-                : undefined
-            "
-            @mouseenter="(e) => onHover(e, contribution)"
-            @mouseleave="onLeave"
-            />
-      </div>
+            <div class="flex">
+                <div class="mr-2 flex flex-col justify-start">
+                    <span
+                        v-for="(day, i) in dayLabels"
+                        :key="day"
+                        class="my-[2px] h-[12px] text-xs text-neutral-500 dark:text-neutral-400"
+                        :class="{ invisible: !showDayLabel(i) }"
+                        >
+                        {{ day }}
+                    </span>
+                </div>
+                <div class="flex justify-start gap-[2.9px]">
+                    <div v-for="week in weeks" :key="week.firstDay">
+                        <span
+                            v-for="contribution in week.contributionDays"
+                            :key="contribution.date"
+                            class="my-[2px] block h-[15px] w-[15px] rounded-sm
+                                    bg-white dark:bg-neutral-800
+                                    transition-all duration-150
+                                    border-[0.1px] border-neutral-300
+                                    dark:border-neutral-900
+                                    hover:ring-2 hover:ring-neutral-400
+                                    dark:hover:ring-neutral-500"
+                            :style="
+                                contribution.contributionCount > 0
+                                ? { backgroundColor: contribution.color }
+                                : undefined
+                            "
+                            @mouseenter="(e) => onHover(e, contribution)"
+                            @mouseleave="onLeave"
+                            @click="(e) => onHover(e, contribution)"
+                            />
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-  </div>
+    <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2 text-sm">
+            <span class="dark:text-neutral-400">
+                {{ tGithub('title_less_contribution') }}
+            </span>
 
-  <div class="flex flex-wrap items-center justify-between gap-2">
-    <div class="flex items-center gap-2 text-sm">
-      <span class="dark:text-neutral-400">
-        {{ tGithub('title_less_contribution') }}
-      </span>
+            <ul class="flex gap-1">
+                <li class="h-[10px] w-[10px] rounded-sm bg-neutral-300 dark:bg-neutral-800" />
+                <li
+                    v-for="color in contributionColors"
+                    :key="color"
+                    class="h-[10px] w-[10px] rounded-sm"
+                    :style="{ backgroundColor: color }"
+                />
+            </ul>
 
-      <ul class="flex gap-1">
-        <li class="h-[10px] w-[10px] rounded-sm bg-neutral-300 dark:bg-neutral-800" />
-        <li
-          v-for="color in contributionColors"
-          :key="color"
-          class="h-[10px] w-[10px] rounded-sm"
-          :style="{ backgroundColor: color }"
-        />
-      </ul>
+            <span>{{ tGithub('title_more_contribution') }}</span>
+        </div>
 
-      <span>{{ tGithub('title_more_contribution') }}</span>
+        <div
+            v-if="tooltip.show"
+            class="fixed z-50 max-w-[220px]
+                    rounded bg-neutral-900 px-2 py-1
+                    text-xs text-white shadow-lg
+                    pointer-events-none
+                    transition-opacity duration-150"
+            :style="tooltipStyle"
+            >
+            <strong>{{ tooltip.count }}</strong>
+            {{ locale === 'en' ? 'contributions on' : 'kontribusi pada' }}
+            {{ tooltip.date }}
+        </div>
     </div>
-
-    <div
-        v-if="tooltip.show"
-        class="fixed z-50 rounded bg-neutral-900 px-2 py-1 text-xs text-white shadow-lg pointer-events-none"
-        :style="{
-            top: tooltip.y + 12 + 'px',
-            left: tooltip.x + 12 + 'px',
-        }"
-        >
-        <strong>{{ tooltip.count }}</strong>
-        {{ locale === 'en' ? 'contributions on' : 'kontribusi pada' }}
-        {{ tooltip.date }}
-    </div>
-
-  </div>
 </template>
 
 <script setup lang="ts">
-    const BOX_SIZE = 12
+    const DAY_LABEL_WIDTH = 32
+    const BOX_SIZE = 15
     const COLUMN_GAP = 2.9
     const WEEK_WIDTH = BOX_SIZE + COLUMN_GAP
 
@@ -149,8 +165,53 @@
         }
     }
 
+    const TOOLTIP_OFFSET = 12
+    const TOOLTIP_WIDTH = 220
+    const TOOLTIP_HEIGHT = 40
+    const hideTooltip = () => {
+        tooltip.value.show = false
+    }
+    onMounted(() => {
+        window.addEventListener('scroll', hideTooltip, true)
+    })
+
+    onUnmounted(() => {
+        window.removeEventListener('scroll', hideTooltip, true)
+    })
+
+    const tooltipStyle = computed(() => {
+    if (typeof window === 'undefined') return {}
+
+        const vw = window.innerWidth
+        const vh = window.innerHeight
+
+        let left = tooltip.value.x + TOOLTIP_OFFSET
+        let top = tooltip.value.y + TOOLTIP_OFFSET
+
+        if (left + TOOLTIP_WIDTH > vw) {
+            left = vw - TOOLTIP_WIDTH - 8
+        }
+        if (left < 8) left = 8
+
+        if (top + TOOLTIP_HEIGHT > vh) {
+            top = tooltip.value.y - TOOLTIP_HEIGHT - TOOLTIP_OFFSET
+        }
+        if (top < 8) top = 8
+
+        return {
+            left: `${left}px`,
+            top: `${top}px`,
+        }
+    })
+
     const onLeave = () => {
         tooltip.value.show = false
+    }
+
+    const dayLabels = ['Mon', '', 'Wed', '', 'Fri', '', '']
+
+        const showDayLabel = (index: number) => {
+        return index === 0 || index === 2 || index === 4
     }
 
 </script>
