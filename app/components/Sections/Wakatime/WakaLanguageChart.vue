@@ -42,7 +42,7 @@ const draw = () => {
 
   container.value.innerHTML = ''
 
-  const margin = { top: 10, right: 40, bottom: 30, left: 140 }
+  const margin = { top: 10, right: 40, bottom: 30, left: 40 }
   const width = 600 - margin.left - margin.right
   const barHeight = 26
   const height = barHeight * chartData.value.length

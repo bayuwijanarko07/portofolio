@@ -1,24 +1,8 @@
 <template>
   <div
     ref="divRef"
-    tabindex="0"
-    @mousemove="handleMouseMove"
-    @focus="handleFocus"
-    @blur="handleBlur"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-    :class="[
-      'relative overflow-hidden rounded-2xl border-[1.5px] border-neutral-300 bg-white dark:border-neutral-800 dark:bg-neutral-900',
-      className,
-    ]"
+    class="rounded-2xl border-[1.5px] border-neutral-300 bg-white dark:border-neutral-800 dark:bg-neutral-900"
   >
-    <div
-      class="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"
-      :style="{
-        opacity,
-        background: `radial-gradient(circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 80%)`,
-      }"
-    />
     <slot />
   </div>
 </template>

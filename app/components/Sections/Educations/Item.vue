@@ -18,13 +18,6 @@
                     •
                     </span>
                     <span>{{ major }}</span>
-                    <div class="flex gap-2">
-                        <span class="hidden text-neutral-300 dark:text-neutral-700 md:block">
-                        •
-                        </span>
-                        <span>GPA: </span>
-                    <span>{{ gpa }}</span>
-                    </div>
                 </div>
                 <div class="flex flex-col gap-1 text-[12px] md:flex-row md:gap-2">
                     <span class="dark:text-neutral-500">

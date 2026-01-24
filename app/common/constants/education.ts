@@ -1,7 +1,7 @@
 export const EDUCATION = [
   {
     school: "Universitas Terbuka",
-    major: "Information Systems, (S.Kom)",
+    major: "Information Systems",
     logo: "/images/education/ut.webp",
     location: "Yogyakarta, Indonesia",
     degree: "Bachelor's degree",
