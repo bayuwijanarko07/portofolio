@@ -59,4 +59,7 @@ export default defineNuxtConfig({
     githubToken: process.env.GITHUB_PERSONAL_TOKEN,
   },
   css: ["v-network-graph/lib/style.css"],
+  nitro: {
+    preset: 'cloudflare-pages'
+  }
 })
