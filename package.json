@@ -10,8 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/octicon": "^1.2.19",
+    "@iconify-json/uil": "^1.2.3",
     "@nuxt/icon": "^2.2.0",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.0",
