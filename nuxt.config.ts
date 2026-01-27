@@ -52,7 +52,7 @@ export default defineNuxtConfig({
   },
   icon: {
     serverBundle: {
-      collections: ['uil', 'mdi','material-symbols-light','octicon']
+      collections: ['uil', 'mdi', 'material-symbols-light']
     }
   },
   runtimeConfig: {

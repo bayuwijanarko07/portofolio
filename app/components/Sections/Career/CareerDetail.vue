@@ -21,10 +21,10 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  title: string
-  items: string[]
-  icon: string
-  iclas: string
-}>()
+  defineProps<{
+    title: string
+    items: string[]
+    icon: string
+    iclas: string
+  }>()
 </script>
