@@ -1,4 +1,4 @@
 <template>
-  <div> 
-  </div>
+  <SectionsProjects/>
+  <ElementsBreakline />
 </template>

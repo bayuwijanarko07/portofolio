@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-1 grid gap-3 py-2 md:grid-cols-2">
+  <div class="mb-1 grid gap-3 py-2 md:grid-cols-3">
     <Item :label="tWaka('start_date')" :value="formatDateID(data?.startDate) ?? '-'" />
     <Item :label="tWaka('end_date')" :value="formatDateID(data?.endDate) ?? '-'" />
     <Item :label="tWaka('daily_average')" :value="data?.dailyAverage ?? '-'" />

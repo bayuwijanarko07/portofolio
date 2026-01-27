@@ -1,18 +1,20 @@
 <template>
-  <section class="space-y-4 leading-7 text-neutral-800 dark:text-neutral-300">
+  <section class="space-y-2">
     <ElementsHeader
       :title="tAbout('title')"
-      icon="mdi:briefcase-variant-outline"
+      icon="mdi:account"
     />
     <ElementsSubHeader>
       {{ tAbout('description') }}
     </ElementsSubHeader>
-     <div
+    <ElementsCard class="space-y-2 p-6">
+    <div
       v-for="item in paragrafData"
       :key="item"
     >
       {{ t(`ProfilPage.about.paragraf_${item}`) }}
     </div>
+    </ElementsCard>
   </section>
 </template>
 <script setup lang="ts">

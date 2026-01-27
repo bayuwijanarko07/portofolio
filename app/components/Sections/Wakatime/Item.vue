@@ -3,7 +3,7 @@
         <span class="text-sm text-neutral-600 dark:text-neutral-400">
             {{ label }}
         </span>
-        <span>{{ value || "-" }}</span>
+        <span class="text-blue-500">{{ value || "-" }}</span>
     </ElementsCard>
 </template>
 <script setup lang="ts">

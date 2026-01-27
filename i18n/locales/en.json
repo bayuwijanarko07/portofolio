@@ -1,18 +1,4 @@
 {
-  "HomePage": {
-    "intro": "Hi, I'm Satria Bahari",
-    "location": "Based in Jambi, Indonesia 🇮🇩",
-    "location_type": "Onsite",
-    "resume": "Experienced and passionate Fullstack Developer specializing in building scalable and efficient digital solutions. On the frontend, I work with Next.js, TypeScript, and Tailwind CSS to craft responsive and accessible user interfaces. On the backend, I develop robust services using Golang, and for mobile, I build native Android apps with Kotlin. I’m a collaborative and detail-oriented engineer committed to delivering well-structured, high-performance applications across platforms.",
-    "skills": {
-      "title": "Skills",
-      "sub_title": "My professional skills."
-    },
-    "bento": {
-      "title": "Featured Sections",
-      "sub_title": "Explore everything I’ve crafted, contributed, and accomplished."
-    }
-  },
   "ProfilPage": {
     "title": "Profile",
     "description": "Short Biography",
@@ -73,7 +59,7 @@
     },
     "github": {
       "title": "GitHub Contributions",
-      "sub_title": "My GitHub activity over the past year.",
+      "sub_title": "GitHub activity over the past year.",
       "title_total_contribution": "Total",
       "title_total_this_week_contribution": "This week",
       "title_best_contribution": "Best",
@@ -94,6 +80,17 @@
       "all_time_since_joined": "All-Time Coding Since Joined",
       "languages": "Languages"
     }
+  },
+  "ProjectsPage": {
+    "title": "Projects",
+    "description": "A showcase of both private and open-source projects I’ve built or contributed to.",
+    "view_project": "Lihat Proyek",
+    "tech_stack": "Teknologi yang Digunakan",
+    "back_button": "Kembali",
+    "source_code_text": "Kode Sumber",
+    "live_demo_text": "Demo Langsung",
+    "error": "Terjadi kesalahan pada server.",
+    "no_data": "Data tidak tersedia."
   },
   "ContactPage": {
     "title": "Contact",
@@ -134,8 +131,8 @@
     "sub_title": "All Rights Reserved."
   },
   "LocaleSwitcher": {
-    "en": "🇺🇸",
-    "id": "🇮🇩",
+    "en": "EN",
+    "id": "ID",
     "label": "Language"
   },
   "Navigation": {
