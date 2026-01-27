@@ -57,9 +57,10 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     githubToken: process.env.GITHUB_PERSONAL_TOKEN,
+    wakatimeApiKey: process.env.WAKATIME_API_KEY
   },
   css: ["v-network-graph/lib/style.css"],
   nitro: {
     preset: 'cloudflare-pages'
-  }
+  },
 })
