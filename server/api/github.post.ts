@@ -32,5 +32,5 @@ export default defineEventHandler(async () => {
   console.log('TOKEN EXISTS:', !!config.githubToken)
   console.log('TOKEN LENGTH:', config.githubToken?.length)
 
-  return { ok: true }
+  return config.githubToken
 })
