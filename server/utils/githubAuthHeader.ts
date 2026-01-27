@@ -11,5 +11,6 @@ export const githubAuthHeader = () => {
   return {
     Authorization: `Bearer ${config.githubToken}`,
     'Content-Type': 'application/json',
+    'User-Agent': 'Nuxt-Cloudflare-App'
   }
 }
