@@ -22,7 +22,8 @@
       class="space-y-1"
     >
       <Overview :data="contributionCalendar" />
-      <Calendar :data="contributionCalendar" />
+      <!-- <Calendar :data="contributionCalendar" /> -->
+      <MonthlyChart :data="contributionCalendar" />
     </div>
   </section>
 </template>
@@ -31,6 +32,7 @@
   import { useI18n } from '#imports'
   import Overview from './Overview.vue'
   import Calendar from './Calendar.vue'
+  import MonthlyChart from './MonthlyChart.vue'
   import type { ContributionCalendar } from '@/types/github'
 
   const { t } = useI18n()

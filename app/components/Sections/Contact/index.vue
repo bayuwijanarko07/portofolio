@@ -2,7 +2,7 @@
   <section class="space-y-4 leading-7 text-neutral-800 dark:text-neutral-300">
     <ElementsHeader
       :title="tCont('title')"
-      icon="mdi:briefcase-variant-outline"
+      icon="mdi:contact"
     />
     <ElementsSubHeader>
       {{ tCont('description') }}

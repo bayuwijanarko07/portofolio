@@ -206,7 +206,7 @@
     })
 
     const tooltipStyle = computed(() => {
-    if (typeof window === 'undefined') return {}
+        if (typeof window === 'undefined') return {}
 
         const vw = window.innerWidth
         const vh = window.innerHeight
