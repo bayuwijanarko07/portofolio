@@ -1,5 +1,5 @@
 <template>
-  <section v-if="isActive" class="space-y-2">
+  <section v-if="isActive" class="space-y-2 px-4 md:px-10 mx-auto w-full">
     <ElementsHeader
       :title="tWaka('title')"
       icon="octicon:check-circle-24"

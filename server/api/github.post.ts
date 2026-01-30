@@ -16,7 +16,7 @@ export default cachedEventHandler(async () => {
         },
       }
     )
-    return res.data.user.contributionsCollection.contributionCalendar
+     return res.data.user.contributionsCollection
   },
   // {
   //   maxAge: 60 * 60, 

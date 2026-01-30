@@ -23,6 +23,10 @@ export const GITHUB_USER_QUERY = `
             }
           }
         }
+        totalCommitContributions
+        totalIssueContributions
+        totalPullRequestContributions
+        totalPullRequestReviewContributions
       }
     }
   }

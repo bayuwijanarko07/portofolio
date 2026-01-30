@@ -1,4 +1,4 @@
 <template>
-  <SectionsContact/>
+  <SectionsContact />
   <ElementsBreakline />
 </template>
