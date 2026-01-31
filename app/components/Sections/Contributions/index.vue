@@ -18,13 +18,15 @@
     </p>
     <div v-else-if="contributionCalendar">
       <Overview :data="contributionCalendar" />
-      <div class="flex flex-col xl:flex-row xl:items-start gap-3 py-2">
-        <div class="w-full xl:w-9/12">
+      <div class="flex flex-col xl:flex-row xl:items-center gap-4 py-2">
+        <div class="w-full xl:flex-1">
           <Calendar :data="contributionCalendar" />
         </div>
 
-        <div class="w-full xl:w-3/12">
-          <GithubLineChart :data="allTimeContribution" />
+        <div class="w-full xl:w-[260px] flex items-center">
+          <div class="w-full max-h-[260px]">
+            <GithubLineChart :data="allTimeContribution" />
+          </div>
         </div>
       </div>
     </div>

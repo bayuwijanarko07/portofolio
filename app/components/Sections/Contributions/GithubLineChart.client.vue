@@ -1,6 +1,6 @@
 <template>
   <ElementsCardWrapper>
-    <div ref="container" class="w-full sm:w-[360px] md:w-[220px] aspect-[4/3] mt-4 mx-auto">
+    <div ref="container" class="w-full sm:w-[360px] md:w-[240px] aspect-[4/3] mt-4 mx-auto">
       <svg ref="svg" class="w-full h-full"></svg>
     </div>
   </ElementsCardWrapper>
@@ -65,16 +65,10 @@ const draw = () => {
   if (!svg.value || !container.value || !props.data) return
 
   const { width } = container.value.getBoundingClientRect()
-  const height = width * 0.75
-  const radius = Math.min(width, height) * 0.35
+  const height = width * 1
+  const radius = Math.min(width, height) * 0.4
 
-  const {
-    commits,
-    issues,
-    pullRequests,
-    pullRequestReviews,
-    total
-  } = props.data
+  const { commits, issues, pullRequests, pullRequestReviews, total } = props.data
 
   const scale = d3.scaleLinear()
     .domain([0, total])
