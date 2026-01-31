@@ -111,15 +111,10 @@
     </ElementsCard>
 </template>
 <script setup lang="ts">
-    import {
-        formatMonthYear,
-        diffInMonths,
-        formatDurationFromMonths,
-    } from '@/utils/date'
-
     import CareerDetail from './CareerDetail.vue'
     import { useMotion } from '@vueuse/motion'
     import { useI18n } from 'vue-i18n'
+    import { formatMonthYear, diffInMonths, formatDurationFromMonths } from '@/utils/date'
     
     const { t, locale } = useI18n()
 

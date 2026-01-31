@@ -1,27 +1,18 @@
 <template>
-  <nav class="flex flex-col gap-y-1">
-    <div
-      v-if="title"
-      class="mb-2 ml-2 mt-1 hidden text-sm text-neutral-600 dark:text-neutral-500 lg:block"
-    >
-      {{ title }}
-    </div>
-
-    <SidebarMenuItem
-      v-for="(item, index) in list"
-      :key="index"
-      v-bind="item"
-    />
-  </nav>
+  <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
+    <nav class="mb-6">
+      <ul class="flex flex-col gap-1">
+        <SidebarMenuItem
+          v-for="(item, index) in list"
+          :key="index"
+          v-bind="item"
+        />
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script setup lang="ts">
-    import type { MenuItemProps } from '@/types/menu'
-
-    interface MenuProps {
-        title?: string
-        list: MenuItemProps[]
-    }
-
+    import type { MenuProps } from '@/types/menu'
     defineProps<MenuProps>()
 </script>

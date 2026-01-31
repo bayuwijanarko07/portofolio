@@ -10,3 +10,8 @@ export type MenuItemProps = {
     isHover?: boolean;
     isExclusive?: boolean;
 };
+
+export type MenuProps = {
+    title?: string
+    list: MenuItemProps[]
+}

@@ -4,10 +4,7 @@
       <table class="border-collapse">
         <thead>
           <tr>
-            <!-- kosong untuk label hari -->
             <th class="w-8"></th>
-
-            <!-- label bulan -->
             <th
               v-for="month in months"
               :key="month.firstDay"
@@ -21,14 +18,11 @@
 
         <tbody>
           <tr v-for="(day, dayIndex) in dayLabelsFull" :key="dayIndex">
-            <!-- label hari -->
             <td class="text-xs text-neutral-500 dark:text-neutral-400 pr-2">
               <span v-if="showDayLabel(dayIndex)">
                 {{ day }}
               </span>
             </td>
-
-            <!-- cell kontribusi -->
             <td
               v-for="week in weeks"
               :key="week.firstDay + '-' + dayIndex"
@@ -56,7 +50,6 @@
       </table>
     </div>
 
-    <!-- Legend -->
     <div class="flex flex-wrap items-center justify-between gap-2 mt-2">
       <div class="flex items-center gap-2 text-sm">
         <span class="dark:text-neutral-400">
@@ -76,7 +69,6 @@
         <span>{{ tGithub('title_more_contribution') }}</span>
       </div>
 
-      <!-- Tooltip -->
       <div
         v-if="tooltip.show"
         class="fixed z-50 max-w-[220px]
@@ -118,12 +110,10 @@ const tGithub = (key: string) => t(`DashboardPage.github.${key}`)
 const props = defineProps<CalendarProps>()
 
 const weeks = computed(() => props.data?.weeks ?? [])
-
 const getDay = (week: any, index: number): ContributionDay | null => {
   return week.contributionDays[index] ?? null
 }
 
-// ✅ months tetap sama
 const months = computed<CalendarMonth[]>(() => {
   if (!weeks.value.length) return []
 
@@ -160,8 +150,7 @@ const months = computed<CalendarMonth[]>(() => {
 
   return Array.from(monthMap.values()).map(({ _weeks, ...month }) => month)
 })
-
-// ✅ warna kontribusi
+ 
 const contributionColors = computed<string[]>(() => {
   const set = new Set<string>()
 
@@ -184,7 +173,6 @@ const contributionColors = computed<string[]>(() => {
   return colors.sort((a, b) => getBrightness(b) - getBrightness(a)).slice(1)
 })
 
-// ✅ tooltip
 const tooltip = ref({
   show: false,
   x: 0,
@@ -244,7 +232,6 @@ const tooltipStyle = computed(() => {
   }
 })
 
-// ✅ label hari (full untuk table)
 const dayLabelsFull = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 const showDayLabel = (index: number) => {

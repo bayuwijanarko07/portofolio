@@ -1,17 +1,24 @@
 <template>
-  <header class="sticky flex w-full top-0 z-99 bg-white xl:border-b xl:px-6 dark:border-neutral-800 dark:bg-neutral-900 dark:text-gray-100">
+  <header class="sticky flex w-full top-0 z-50 bg-white xl:border-b xl:px-6 dark:border-neutral-800 dark:bg-neutral-900 dark:text-gray-100">
     <div class="flex items-center justify-between grow xl:flex-row">
 
-      <div class="flex items-center w-full gap-2 px-3 py-3
-       border-gray-200 dark:border-gray-800 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0">
-        <button class="relative flex items-center bg-neutral-100 dark:bg-neutral-800 rounded
-          border border-neutral-300 dark:border-neutral-700 transition-color p-2">
-          <Icon
-              name="mdi-light:format-indent-increase"
-              class="text-gray-600 w-5 h-5 hover:text-gray-900 dark:text-gray-300 hover:dark:text-gray-100 transition-colors duration-300"
-            />
+      <div class="flex items-center w-full gap-2 px-3 py-3 border-gray-200 dark:border-gray-800 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0">
+        <button
+          @click="handleToggle"
+          class="flex items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg z-99999 dark:border-gray-800 dark:text-gray-400 lg:h-11 lg:w-11 lg:border"
+          :class="[
+            isMobileOpen
+              ? 'lg:bg-transparent dark:lg:bg-transparent bg-gray-100 dark:bg-gray-800'
+              : '',
+          ]"
+        >
+        <Icon
+          name="mdi-light:format-indent-increase"
+          class="text-gray-600 w-5 h-5 hover:text-gray-900 dark:text-gray-300 hover:dark:text-gray-100 transition-colors duration-300"
+        />
         </button>
-        <div class="hidden xl:block">
+        
+        <!-- <div class="hidden xl:block">
           <form>
             <div class="relative">
               <label for="search-input" class="sr-only">Search or type command</label>
@@ -26,7 +33,7 @@
                 </button>
               </div>
             </form>
-        </div>
+        </div> -->
       </div>
 
       <div class="flex justify-end items-center w-full gap-4 px-5 py-4">
@@ -38,11 +45,15 @@
 </template>
 
 <script setup>
-  const props = defineProps({
-    expandMenu: Boolean,
-    imageSize: {
-      type: Number,
-      default: 40
-    }
-  })
+  import { useSidebar } from '@/composables/useSidebar'
+
+  const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar()
+
+  const handleToggle = () => {
+    if (window.innerWidth >= 1024) {
+        toggleSidebar()
+      } else {
+        toggleMobileSidebar()
+      }
+  }
 </script>
